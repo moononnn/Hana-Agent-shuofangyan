@@ -10,7 +10,6 @@
     "app/agents.read",
     "app/resources.read",
     "app/resources.write",
-    "app/sessions.read",
     "app/models.infer",
     "app/services.provide"
   ],

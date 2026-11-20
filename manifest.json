@@ -4,7 +4,7 @@
   "name": "说方言",
   "version": "0.3.0",
   "entry": "index.js",
-  "description": "给每个伙伴挑一口家乡味。挑上就写进 ta 的人格文件，ta 打字自然带那个味儿；取消即移除，不留痕迹。",
+  "description": "小花老是说普通话，很无趣吧？一个能让小花说不同地区方言的应用，有四川话、北京话、东北话、台湾腔等等，还可以总结你的发言习惯，学你说话！",
   "capabilities": [
     "app/tools.expose-to-model",
     "app/agents.read",

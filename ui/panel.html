@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>说方言 · 口音小册</title>
+  <link rel="stylesheet" href="./assets/beautify-select.css">
+  <link rel="stylesheet" href="./assets/panel.css">
+</head>
+<body>
+  <div class="page">
+    <header class="head">
+      <div class="head-main">
+        <h1 class="title">口音小册</h1>
+        <p class="lead">给每位伙伴挑一口家乡味。写进 ta 的人格文件，下一条消息就带这个味儿。</p>
+      </div>
+      <div class="head-side">
+        <span class="tally" id="tally"></span>
+        <button type="button" class="btn-ghost btn-line" id="btn-refresh">刷新列表</button>
+      </div>
+    </header>
+
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+
+    <div class="page-tabs" role="tablist" aria-label="说方言页面">
+      <button type="button" class="page-tab" id="tab-dialect" role="tab" aria-selected="true" aria-controls="panel-dialect" tabindex="0">伙伴口音</button>
+      <button type="button" class="page-tab" id="tab-style" role="tab" aria-selected="false" aria-controls="panel-style" tabindex="-1">学我说话 <span class="tab-indicator" id="style-tab-indicator" hidden></span></button>
+    </div>
+
+    <section class="tab-panel" id="panel-dialect" role="tabpanel" aria-labelledby="tab-dialect">
+      <section id="board" class="board" aria-live="polite">
+        <div class="empty">正在读伙伴名单…</div>
+      </section>
+
+      <details class="hidden-box" id="hidden-box" hidden>
+        <summary>
+          <span class="hidden-arrow" aria-hidden="true"></span>
+          <span class="hidden-title">已隐藏</span>
+          <span class="hidden-count" id="hidden-count">0</span>
+          <span class="hidden-hint">展开可以放回来</span>
+        </summary>
+        <ul class="hidden-list" id="hidden-list"></ul>
+      </details>
+    </section>
+
+    <section class="tab-panel" id="panel-style" role="tabpanel" aria-labelledby="tab-style" hidden inert>
+      <section class="style" id="style" data-dd-lift>
+        <div class="style-top">
+          <div class="style-source"><label for="style-source">语料来源</label>
+            <select id="style-source" aria-label="语料来源"></select>
+          </div>
+          <button type="button" class="btn-ghost btn-action-main" id="btn-style-summary">总结</button>
+        </div>
+        <p class="style-desc">从你的会话取样，总结成一段风格模板。只有明确采用后，伙伴才会用它。</p>
+        <div class="style-compare" aria-label="风格版本对比">
+          <section class="compare-pane">
+            <h3 id="style-current-title">当前版</h3>
+            <pre id="style-current" class="style-text"></pre>
+          </section>
+          <section class="compare-pane">
+            <h3 id="style-candidate-title">新草稿</h3>
+            <pre id="style-text" class="style-text"></pre>
+          </section>
+        </div>
+        <div class="style-decision-actions">
+          <button type="button" class="btn-ghost btn-action-main" id="btn-style-confirm" hidden>采用新版</button>
+          <button type="button" class="btn-ghost btn-line" id="btn-style-revert" hidden>恢复这版</button>
+        </div>
+        <p class="style-status" id="style-status" role="status" aria-live="polite"></p>
+        <details class="style-history" id="style-history" hidden>
+          <summary>历史版本 <span id="style-history-count"></span></summary>
+          <div class="style-source style-version-source"><label for="style-version">对比哪一版</label>
+            <select id="style-version" aria-label="选择要对比的版本"></select>
+          </div>
+        </details>
+      </section>
+    </section>
+
+    <footer class="foot">
+      会改伙伴的人格文件。只在你点了口音时写，取消就移除，你自己写的内容不动。写完下一条消息就带这个味儿，不用重启；想更干净就开个新对话。隐藏只影响「说方言」里的显示，不改 ta 的口音和人格。
+    </footer>
+  </div>
+
+  <div class="consent-veil" id="consent-veil" hidden>
+    <section class="consent-card" role="dialog" aria-modal="true" aria-labelledby="consent-title">
+      <p class="consent-kicker">开始之前</p>
+      <h2 class="consent-title" id="consent-title">挑口音，是在改 ta 的人格</h2>
+      <div class="consent-body">
+        <p>你点中的口音会写进那位伙伴的人格文件（<code>agents/&lt;id&gt;/AGENTS.md</code>），写完下一条消息就带这个味儿，不用重启。</p>
+        <p>写进去的是一段用注释标记圈起来的字，只动这一段。你自己写的内容一个字节都不会被碰。</p>
+        <p>取消口音就整段删掉，文件回原样，不留痕迹。</p>
+      </div>
+      <div class="consent-actions">
+        <button type="button" class="btn-ghost btn-action-main" id="btn-consent">知道了，开始挑</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="./assets/beautify-select.js" defer></script>
+  <script type="module" src="./assets/panel.js"></script>
+</body>
+</html>

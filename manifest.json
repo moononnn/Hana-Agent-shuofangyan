@@ -1,0 +1,35 @@
+{
+  "manifestVersion": 2,
+  "id": "shuo-fangyan",
+  "name": "说方言",
+  "version": "0.3.0",
+  "entry": "index.js",
+  "description": "给每个伙伴挑一口家乡味。挑上就写进 ta 的人格文件，ta 打字自然带那个味儿；取消即移除，不留痕迹。",
+  "capabilities": [
+    "app/tools.expose-to-model",
+    "app/agents.read",
+    "app/resources.read",
+    "app/resources.write",
+    "app/sessions.read",
+    "app/models.infer",
+    "app/services.provide"
+  ],
+  "contributes": {
+    "cards": [
+      {
+        "id": "panel",
+        "title": "说方言",
+        "route": "/panel.html",
+        "face": {
+          "image": "assets/cover.svg"
+        },
+        "realization": "page",
+        "siteNavEntry": false,
+        "cardForm": "flush",
+        "titlebar": "solid"
+      }
+    ]
+  },
+  "icon": "assets/icon.svg",
+  "minAppVersion": "1.5.7-beta"
+}

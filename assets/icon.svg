@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-  <rect x="16" y="16" width="480" height="480" rx="112" fill="#f7f3ea"/>
-  <rect x="16" y="16" width="480" height="480" rx="112" fill="none" stroke="#e3d9c6" stroke-width="6"/>
-  <path d="M104 156c0-30 24-54 54-54h196c30 0 54 24 54 54v108c0 30-24 54-54 54H228l-76 68v-68h-0c-26 0-48-20-48-46z" fill="#a8d5c8"/>
-  <path d="M104 156c0-30 24-54 54-54h196c30 0 54 24 54 54v108c0 30-24 54-54 54H228l-76 68v-68h-0c-26 0-48-20-48-46z" fill="none" stroke="#6fae9c" stroke-width="7" stroke-linejoin="round"/>
-  <text x="256" y="238" font-family="KaiTi, STKaiti, SimHei, sans-serif" font-size="132" font-weight="700" text-anchor="middle" fill="#2f4a41">嘛</text>
-  <circle cx="398" cy="140" r="30" fill="#f2b8c6"/>
-  <circle cx="398" cy="140" r="30" fill="none" stroke="#e39aad" stroke-width="5"/>
-</svg>

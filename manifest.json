@@ -21,7 +21,7 @@
         "title": "说方言",
         "route": "/panel.html",
         "face": {
-          "image": "assets/cover.svg"
+          "image": "assets/cover.png"
         },
         "realization": "page",
         "siteNavEntry": false,
@@ -30,6 +30,6 @@
       }
     ]
   },
-  "icon": "assets/icon.svg",
+  "icon": "assets/icon.png",
   "minAppVersion": "1.5.7-beta"
 }

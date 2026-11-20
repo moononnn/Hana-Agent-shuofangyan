@@ -819,6 +819,38 @@ test('已确认过的老用户：不弹遮罩', async () => {
   assert.equal(app.el('consent-veil').hidden, true);
 });
 
+// ── 取消口音：得一眼看得见 ────────────────────────
+test('取消口音：展开就看得到，点了把这位伙伴清掉', async () => {
+  const app = createApp(defaultRespond({
+    '/api/state': jsonResp({
+      ok: true,
+      data: stateData({ config: { agents: { a1: { dialect: 'taiwan', enabled: true } } } }),
+    }),
+    '/api/dialect': (url, init) => jsonResp({ ok: true, data: JSON.parse(init.body), changed: [] }),
+  }));
+  assert.ok(await waitFor(() => app.el('board').innerHTML.includes('小花')));
+  const html = app.el('board').innerHTML;
+  assert.match(html, /取消口音/, '有口音时要给出取消入口');
+  assert.match(html, /当前：/, '要写清当前是什么口音');
+
+  app.el('board').dispatch('click', {
+    target: clickTarget({ '.agent': cardOf('a1'), '[data-act="clear"]': {} }),
+  });
+  const sent = await waitFor(() => app.calls.some((c) => c.url.includes('/api/dialect')));
+  assert.ok(sent, '点取消要发出保存请求');
+  const call = app.calls.find((c) => c.url.includes('/api/dialect'));
+  const body = JSON.parse(call.init.body);
+  assert.ok(!body.agents.a1, '这位伙伴的条目要被删掉');
+});
+
+test('没口音的那位：不显示取消，只提示可以点一格', async () => {
+  const app = createApp(defaultRespond());
+  assert.ok(await waitFor(() => app.el('board').innerHTML.includes('小花')));
+  const html = app.el('board').innerHTML;
+  assert.ok(!html.includes('取消口音'), '没口音就不该有取消按钮');
+  assert.match(html, /现在没有口音/, '要告诉人可以点格子');
+});
+
 // 后端也要拦：前端那层是体验，这一层才是保证。
 test('后端拦没确认的保存请求（源码级哨兵）', () => {
   const api = fs.readFileSync(path.join(ROOT, 'server', 'api.js'), 'utf8');

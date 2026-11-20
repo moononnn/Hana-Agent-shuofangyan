@@ -319,6 +319,17 @@
     return flat.join('');
   }
 
+  // 当前口音 + 取消入口。放在九宫格上方：一展开就看得见，
+  // 不用拖到最底下找（顶到最底就是没人找得到）。
+  function currentRowHtml(agentId) {
+    var s = settingOf(agentId);
+    if (!s) {
+      return '<p class="current is-empty">现在没有口音，点下面任意一格就开。</p>';
+    }
+    return '<p class="current">当前：<strong>' + escHtml(dialectName(s.dialect)) + '</strong>'
+      + '<button type="button" class="link-btn" data-act="clear">取消口音</button></p>';
+  }
+
   function userstyleRowHtml(agentId) {
     var s = settingOf(agentId);
     var enabled = Boolean(s && s.dialect === 'userstyle');
@@ -363,10 +374,10 @@
       + '  <div class="detail" id="det-' + sid + '" aria-hidden="' + (open ? 'false' : 'true') + '">'
       + '    <div class="detail-inner">'
       + '      <p class="note' + (n.empty ? ' is-empty' : '') + '">' + escHtml(n.text) + '</p>'
+      + '      ' + currentRowHtml(agent.id)
       + '      <div class="opts" role="group" aria-label="挑一口口音">' + optsHtml(agent.id) + '</div>'
       + '      ' + userstyleRowHtml(agent.id)
       + '      <div class="actions">'
-      + '        <button type="button" class="btn-ghost" data-act="clear"' + (s ? '' : ' disabled') + '>关闭口音</button>'
       + '        <button type="button" class="btn-ghost btn-line" data-act="hide">在此隐藏</button>'
       + '        <span class="hint">隐藏只影响「说方言」里的显示（语料来源下拉也会跟着），不改 ta 的口音和人格。</span>'
       + '      </div>'

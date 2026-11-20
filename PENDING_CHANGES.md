@@ -1,5 +1,7 @@
 # 待发布变更
 
+- 方言气质查询改成宿主 bus 服务（`app:shuo-fangyan/dialect-bias`，需 `app/services.provide`），删掉原来的 `GET /api/bias`；新增 `lib/dialect-bias.js` 与 6 项测试，README 联动一节同步。合计 86 项测试通过。
+
 - 首次进入加一道知情确认：遮罩上写明「会写进伙伴人格文件、只动自己那一段、取消即删」，点过才让挑口音；后端 `/api/dialect` 同时拦没确认的保存请求（返回 403 + `needConsent`）。新增 `lib/consent.js`、`GET/POST /api/consent`、面板遮罩与四条相关测试。80 项测试通过。
 
 - 口音小册与「学我说话」拆成两个页签；「用我的口吻」独立显示，查看模板只切页、不保存设置。两页保留现有口音、总结与版本数据。40 项相关测试通过。

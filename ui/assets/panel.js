@@ -2,7 +2,7 @@
 //
 // 版面是一本小册子：单列名单，一位伙伴一行，右边写着 ta 现在是什么口音。
 // 点一行就展开，展开区里有话笺（ta 的一句例句）、可选的口音（每个按钮都带着自己的例句）
-// 和两个小动作：关闭口音、在此隐藏。一次只展开一行。
+// 和两个小动作：取消口音、隐藏这位伙伴。一次只展开一行。
 //
 // 隐藏只动「说方言」里的显示：名单接口照旧，口音和人格一个字都不改；
 // 语料来源下拉也跟着换名单，所以影响的是说方言这一块，不只是眼前这一页。
@@ -378,8 +378,8 @@
       + '      <div class="opts" role="group" aria-label="挑一口口音">' + optsHtml(agent.id) + '</div>'
       + '      ' + userstyleRowHtml(agent.id)
       + '      <div class="actions">'
-      + '        <button type="button" class="btn-ghost btn-line" data-act="hide">在此隐藏</button>'
-      + '        <span class="hint">隐藏只影响「说方言」里的显示（语料来源下拉也会跟着），不改 ta 的口音和人格。</span>'
+      + '        <button type="button" class="btn-ghost btn-line" data-act="hide">隐藏这位伙伴</button>'
+      + '        <span class="hint">只影响「说方言」里的显示，不改 ta 的口音和人格。</span>'
       + '      </div>'
       + '    </div>'
       + '  </div>'
@@ -428,7 +428,7 @@
       return '<li class="hidden-item">'
         + '<span class="ava is-small" aria-hidden="true">' + escHtml(String(label).slice(0, 1)) + '</span>'
         + '<span class="name">' + escHtml(label) + '</span>'
-        + '<button type="button" class="btn-ghost btn-line" data-restore="' + escHtml(a.id) + '">恢复显示</button>'
+        + '<button type="button" class="btn-ghost btn-line" data-restore="' + escHtml(a.id) + '">放回名单</button>'
         + '</li>';
     }).join('');
   }

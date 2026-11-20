@@ -775,7 +775,9 @@ test('页面与样式守住了几条约定', () => {
   assert.ok(!SRC.includes('已写进人格'), '「已写进人格」换成一次性保存反馈');
   assert.ok(SRC.includes('?refresh=1'), '刷新要带 refresh=1');
   assert.ok(SRC.includes('/api/roster-visibility'), '隐藏/恢复走 roster-visibility');
-  assert.ok(SRC.includes('隐藏只影响「说方言」里的显示'), '隐藏影响的是说方言里的显示');
+  assert.ok(SRC.includes('只影响「说方言」里的显示，不改 ta 的口音和人格'), '隐藏影响的是说方言里的显示');
+  assert.ok(SRC.includes('隐藏这位伙伴'), '按钮直说隐藏的是这位伙伴');
+  assert.ok(!SRC.includes('在此隐藏'), '「在此隐藏」这种拐弯说法不要再出现');
   assert.ok(!SRC.includes('隐藏只影响这一页'), '不要说成「这一页」');
 });
 
